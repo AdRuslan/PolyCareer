@@ -1,7 +1,13 @@
 import express from 'express';
 import mongoose from 'mongoose';
 
+import { router as userRouter } from './routes/auth.routes.js';
+('./routes/auth.routes.js');
+
 const app = express();
+app.use(express.json());
+
+app.use('/api', userRouter);
 
 const PORT = process.env.PORT || 5000;
 const DB_CONNECTION_URI =
