@@ -1,6 +1,25 @@
-import { Router } from 'express';
-import * as userController from './../controllers/userController.js';
+const express = require('express');
+const { check } = require('express-validator');
 
-export const router = Router();
+const router = express.Router();
+const userController = require('./../controllers/userController');
 
-router.post('/registration', userController.createUser);
+router.post(
+  '/registration',
+  [
+    check('email', 'Некорректный email').isEmail(),
+    check('password', 'Некорректный пароль').isLength({ min: 6 }),
+  ],
+  userController.registerUser
+);
+
+router.post(
+  '/login',
+  [
+    check('email', 'Некорректный email').isEmail(),
+    check('password', 'Некорректный пароль').exists(),
+  ],
+  userController.loginUser
+);
+
+module.exports = router;
