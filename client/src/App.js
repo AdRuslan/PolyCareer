@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import { BrowserRouter } from 'react-router-dom';
 import { useRoutes } from './routes';
 import { AuthContext } from './context/AuthContext';
@@ -20,6 +21,7 @@ function App() {
         <BrowserRouter>
           <Navbar />
           {routes}
+          {isLogin ? <Footer /> : <footer></footer>}
         </BrowserRouter>
       </div>
     </AuthContext.Provider>

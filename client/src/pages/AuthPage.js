@@ -14,20 +14,6 @@ export default function AuthPage() {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
 
-  const registerHandler = async () => {
-    try {
-      await axios
-        .post(
-          '/api/auth/registration',
-          { ...form },
-          { headers: { 'Content-Type': 'application/json' } }
-        )
-        .then((response) => console.log(response));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const loginHandler = async () => {
     try {
       await axios
@@ -39,6 +25,20 @@ export default function AuthPage() {
         .then((response) => {
           login(response.data.token, response.data.userId);
         });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const registerHandler = async () => {
+    try {
+      await axios
+        .post(
+          '/api/auth/registration',
+          { ...form },
+          { headers: { 'Content-Type': 'application/json' } }
+        )
+        .then(() => loginHandler());
     } catch (error) {
       console.log(error);
     }

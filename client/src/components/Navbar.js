@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
 import './Navbar.scss';
@@ -9,22 +10,22 @@ export default function Navbar() {
   return (
     <nav>
       <div className="nav-wrapper navbar blue-grey darken-3">
-        <a href="/" className="brand-logo">
+        <Link to="/" className="brand-logo">
           PolyCareer
-        </a>
+        </Link>
         {isLogin ? (
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li>
-              <a href="/" onClick={logout}>
+              <Link to="/login" onClick={logout}>
                 Выйти
-              </a>
+              </Link>
             </li>
           </ul>
         ) : (
           <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li>
+            {/* <li>
               <a href="/">Войти</a>
-            </li>
+            </li> */}
           </ul>
         )}
       </div>

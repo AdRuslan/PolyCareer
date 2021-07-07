@@ -2,12 +2,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const userRouter = require('./routes/auth.routes');
+const vacancyRouter = require('./routes/vacancy.routes');
 
 const app = express();
 app.use(express.json({ extended: true }));
 
 //ROUTES
 app.use('/api/auth', userRouter);
+app.use('/api/vacancy', vacancyRouter);
 
 //секретные данные, по типу ссылки для подключения бд или ключа jsonwebtoken умышленно не спрятаны
 const PORT = process.env.PORT || 5000;
