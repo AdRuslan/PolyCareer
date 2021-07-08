@@ -128,14 +128,15 @@ export default function MyVacancies() {
 
             <div className="input-field col s6">
               <input
-                type="text"
+                type="number"
                 id="salary"
                 name="salary"
                 className="validate"
+                min="0"
                 value={form.salary}
                 onChange={changeHandler}
               />
-              <label htmlFor="salary">Зарплата</label>
+              <label htmlFor="salary">Зарплата (в рублях)</label>
             </div>
 
             <div className="input-field col s12">
@@ -219,7 +220,7 @@ export default function MyVacancies() {
                   <span className="bold">Должность:</span> {vacancy.position}
                 </div>
                 <div className="col vacancies-text">
-                  <span className="bold">Зарплата:</span> {vacancy.salary}
+                  <span className="bold">Зарплата:</span> {vacancy.salary} ₽
                 </div>
                 <div className="col vacancies-text">
                   <span className="bold">Описание:</span> {vacancy.description}

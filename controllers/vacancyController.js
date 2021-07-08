@@ -52,3 +52,37 @@ exports.deleteVacancy = async (req, res) => {
     console.log(error);
   }
 };
+
+exports.getAllVacancies = async (req, res) => {
+  try {
+    const vacancies = await Vacancy.find();
+    res.json(vacancies);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.getVacanciesStats = async (req, res) => {
+  try {
+    const stats = await Vacancy.aggregate([
+      {
+        $match: { salary: { $gte: 0 } },
+      },
+      {
+        $group: {
+          _id: null,
+          numVacancies: { $sum: 1 },
+          avgSalary: { $avg: '$salary' },
+          minSalary: { $min: '$salary' },
+          maxSalary: { $max: '$salary' },
+        },
+      },
+    ]);
+
+    res.json({
+      stats,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

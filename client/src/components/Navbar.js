@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
 import './Navbar.scss';
@@ -10,15 +10,24 @@ export default function Navbar() {
   return (
     <nav>
       <div className="nav-wrapper navbar blue-grey darken-3">
-        <Link to="/" className="brand-logo">
+        <NavLink to="/" className="brand-logo">
           PolyCareer
-        </Link>
+        </NavLink>
         {isLogin ? (
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li>
-              <Link to="/login" onClick={logout}>
+              <NavLink to="/">Мои вакансии</NavLink>
+            </li>
+            <li>
+              <NavLink to="/vacancies">Все вакансии</NavLink>
+            </li>
+            <li>
+              <NavLink to="/about">О нас</NavLink>
+            </li>
+            <li>
+              <NavLink to="/login" onClick={logout}>
                 Выйти
-              </Link>
+              </NavLink>
             </li>
           </ul>
         ) : (
