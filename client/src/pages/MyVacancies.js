@@ -1,4 +1,5 @@
 import React, { useState, useContext, useCallback, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 
@@ -196,12 +197,14 @@ export default function MyVacancies() {
                   <div className="col vacancies-num">{index + 1}</div>
                   <div className="col">Название компании: {vacancy.name}</div>
                   <div className="col vacancies-buttons">
-                    <i
-                      className="material-icons update-icon"
-                      title="Редактировать вакансию"
-                    >
-                      update
-                    </i>
+                    <Link to={'/update/' + vacancy._id}>
+                      <i
+                        className="material-icons update-icon"
+                        title="Редактировать вакансию"
+                      >
+                        update
+                      </i>
+                    </Link>
                     <i
                       className="material-icons red-text"
                       title="Удалить вакансию"

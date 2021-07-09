@@ -1,11 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
 
 import './AuthPage.scss';
 
-export default function AuthPage() {
+export default function AuthPage(props) {
   const [form, setForm] = useState({ email: '', password: '' });
 
   const { login } = useContext(AuthContext);
@@ -24,6 +25,8 @@ export default function AuthPage() {
         )
         .then((response) => {
           login(response.data.token, response.data.userId);
+          const history = props.history;
+          history.push('/');
         });
     } catch (error) {
       console.log(error);
@@ -82,6 +85,7 @@ export default function AuthPage() {
                       >
                         Войти
                       </button>
+
                       <Link to="/registration" className="btn-outline btn-reg">
                         Нет аккаунта?
                       </Link>

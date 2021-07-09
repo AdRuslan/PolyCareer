@@ -4,6 +4,7 @@ import MyVacancies from './pages/MyVacancies';
 import AuthPage from './pages/AuthPage';
 import AllVacancies from './pages/AllVacancies';
 import About from './pages/About';
+import Update from './pages/Update';
 
 export const useRoutes = (isLogin) => {
   if (isLogin) {
@@ -12,6 +13,7 @@ export const useRoutes = (isLogin) => {
         <Route path="/" exact component={MyVacancies} />
         <Route path="/vacancies" exact component={AllVacancies} />
         <Route path="/about" exact component={About} />
+        <Route path="/update/:id" component={Update} />
         <Redirect to="/" />
       </Switch>
     );

@@ -86,3 +86,24 @@ exports.getVacanciesStats = async (req, res) => {
     console.log(error);
   }
 };
+
+exports.updateVacancy = async (req, res) => {
+  try {
+    const vacancy = await Vacancy.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    res.json(vacancy);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.getOneVacancy = async (req, res) => {
+  try {
+    const vacancy = await Vacancy.findById(req.params.id);
+    res.json(vacancy);
+  } catch (error) {
+    console.log(error);
+  }
+};
