@@ -49,7 +49,7 @@ export default function AllVacancies() {
     <div className="container">
       <h4 onClick={getStats}>Все вакансии:</h4>
       <p>Количество вакансий: {stats.numVacancies}</p>
-      <p>Средняя зарплата: {stats.avgSalary} ₽</p>
+      <p>Средняя зарплата: {stats.avgSalary.toFixed(2)} ₽</p>
       <p>Минимальная зарплата: {stats.minSalary} ₽</p>
       <p>Максимальная зарплата: {stats.maxSalary} ₽</p>
       <div className="vacancies">

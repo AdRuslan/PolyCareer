@@ -20,7 +20,7 @@ function App() {
       <div className="app">
         <BrowserRouter>
           <Navbar />
-          {routes}
+          <main>{routes}</main>
           {isLogin ? <Footer /> : <footer></footer>}
         </BrowserRouter>
       </div>

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import axios from 'axios';
 
 export default function Update(props) {
   const [form, setForm] = useState({});
+  const [redirect, setRedirect] = useState(false);
+
   const id = props.match.params.id;
 
   const changeHandler = (event) => {
@@ -13,13 +15,17 @@ export default function Update(props) {
 
   const updateVacancy = async (id) => {
     try {
-      await axios.patch(
-        `/api/vacancy/update/${id}`,
-        { ...form },
-        {
-          headers: { 'Content-Type': 'application/json' },
-        }
-      );
+      await axios
+        .patch(
+          `/api/vacancy/update/${id}`,
+          { ...form },
+          {
+            headers: { 'Content-Type': 'application/json' },
+          }
+        )
+        .then(() => {
+          setRedirect(true);
+        });
     } catch (error) {
       console.log(error);
     }
@@ -32,13 +38,21 @@ export default function Update(props) {
   //         headers: { 'Content-Type': 'application/json' },
   //       })
   //       .then((response) => {
-  //         setLoaded(true);
   //         setForm(response.data);
   //       });
   //   } catch (error) {
   //     console.log(error);
   //   }
   // };
+
+  // useEffect(() => {
+  //   getOneVacancy(id);
+  //   console.log('hi');
+  // });
+
+  if (redirect) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <div className="container">
@@ -133,14 +147,12 @@ export default function Update(props) {
         </div>
 
         <div className="row">
-          <Link to="/">
-            <button
-              className="waves-effect waves-light btn add-btn"
-              onClick={() => updateVacancy(id)}
-            >
-              Обновить
-            </button>
-          </Link>
+          <button
+            className="waves-effect waves-light btn add-btn"
+            onClick={() => updateVacancy(id)}
+          >
+            Обновить
+          </button>
         </div>
       </form>
     </div>
