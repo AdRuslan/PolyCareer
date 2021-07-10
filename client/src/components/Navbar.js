@@ -22,7 +22,13 @@ export default function Navbar() {
               <NavLink to="/vacancies">Все вакансии</NavLink>
             </li>
             <li>
-              <NavLink to="/about">О нас</NavLink>
+              <NavLink to="/about">О проекте</NavLink>
+            </li>
+            <li>
+              <NavLink to="/foreigners">Трудоустройство иностранных граждан</NavLink>
+            </li>
+            <li>
+              <NavLink to="/reviews">Отзывы</NavLink>
             </li>
             <li>
               <NavLink to="/login" onClick={logout}>

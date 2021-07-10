@@ -12,7 +12,7 @@ export default function Footer() {
             className="grey-text text-lighten-4 right"
             target="_blank"
             rel="noreferrer"
-            href="https://github.com/AdRuslan"
+            href="https://github.com/AdRuslan/PolyCareer"
           >
             GitHub
           </a>

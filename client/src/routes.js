@@ -5,6 +5,8 @@ import AuthPage from './pages/AuthPage';
 import AllVacancies from './pages/AllVacancies';
 import About from './pages/About';
 import Update from './pages/Update';
+import Reviews from './pages/Reviews';
+import Foreigner from './pages/Foreigner';
 
 export const useRoutes = (isLogin) => {
   if (isLogin) {
@@ -14,6 +16,8 @@ export const useRoutes = (isLogin) => {
         <Route path="/vacancies" exact component={AllVacancies} />
         <Route path="/about" exact component={About} />
         <Route path="/update/:id" component={Update} />
+        <Route path="/reviews" component={Reviews} />
+        <Route path="/foreigners" component={Foreigner} />
         <Redirect to="/" />
       </Switch>
     );

@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 
 const userRouter = require('./routes/auth.routes');
 const vacancyRouter = require('./routes/vacancy.routes');
+const specialistsRouter = require('./routes/specialists.routes');
+const reviewsRouter = require('./routes/reviews.routes');
+const partnersRouter = require('./routes/partners.routes');
+const foreignersRouter = require('./routes/foreigners.routes');
 
 const app = express();
 app.use(express.json({ extended: true }));
@@ -10,6 +14,10 @@ app.use(express.json({ extended: true }));
 //ROUTES
 app.use('/api/auth', userRouter);
 app.use('/api/vacancy', vacancyRouter);
+app.use('/api/specialists', specialistsRouter);
+app.use('/api/reviews', reviewsRouter);
+app.use('/api/partners', partnersRouter);
+app.use('/api/foreigners', foreignersRouter);
 
 //секретные данные, по типу ссылки для подключения бд или ключа jsonwebtoken умышленно не спрятаны
 const PORT = process.env.PORT || 5000;
